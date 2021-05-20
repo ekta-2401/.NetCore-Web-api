@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:38233",
-      "sslPort": 44357
+      "applicationUrl": "http://localhost:13061",
+      "sslPort": 44318
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "my_book": {
+    "WebApplication1": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

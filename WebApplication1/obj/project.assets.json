@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ankit\\source\\repos\\my-book\\my-book\\my-book.csproj",
-      "projectName": "my-book",
-      "projectPath": "C:\\Users\\Ankit\\source\\repos\\my-book\\my-book\\my-book.csproj",
+      "projectUniqueName": "C:\\Users\\Ankit\\source\\repos\\my-book\\WebApplication1\\WebApplication1.csproj",
+      "projectName": "WebApplication1",
+      "projectPath": "C:\\Users\\Ankit\\source\\repos\\my-book\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\Ankit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ankit\\source\\repos\\my-book\\my-book\\obj\\",
+      "outputPath": "C:\\Users\\Ankit\\source\\repos\\my-book\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ankit\\AppData\\Roaming\\NuGet\\NuGet.Config",
