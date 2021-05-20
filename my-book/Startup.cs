@@ -2,10 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using my_book.Data;
+using my_book.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +18,10 @@ namespace my_book
 {
     public class Startup
     {
+        public string ConnectionString { get; set; }
         public Startup(IConfiguration configuration)
         {
+            ConnectionString = configuration.GetConnectionString("DefaultConnectionString");
             Configuration = configuration;
         }
 
@@ -27,6 +32,16 @@ namespace my_book
         {
 
             services.AddControllers();
+            services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddTransient<BooksService>();
+            services.AddTransient<AuthorService>();
+            services.AddTransient<PublishersService>();
+            services.AddSwaggerGen(c =>
+
+              {
+                  c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "my_books", Version = "v1" });
+              }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +50,8 @@ namespace my_book
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "my_books v1"));
             }
 
             app.UseHttpsRedirection();
@@ -47,6 +64,8 @@ namespace my_book
             {
                 endpoints.MapControllers();
             });
+
+           // AppDbInitializer.Seed(app);
         }
     }
 }
